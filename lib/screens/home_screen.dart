@@ -14,8 +14,13 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  var _selectedItem;
+
   @override
   Widget build(BuildContext context) {
+    final stationDetailsProvider =
+        Provider.of<StationNameList>(context).stationDetails;
+
     return DefaultTabController(
       length: 3,
       child: Scaffold(
@@ -57,7 +62,7 @@ class _HomeScreenState extends State<HomeScreen> {
         ),
         body: TabBarView(children: [
           StationScreen(),
-          StationDetailsScreen(),
+          StationDetailsScreen(stationDetailsProvider),
           AboutScreen(),
         ]),
       ),

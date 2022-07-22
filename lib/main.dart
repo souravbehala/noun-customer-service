@@ -90,7 +90,7 @@ class MyAppState extends State<MyApp> {
           routes: {
             AddStationScreen.routeName: (context) => AddStationScreen(),
             // '/form-screen': (context) => FormScreen(),
-            // FormScreen.routeName: (context) => FormScreen(),
+            FormScreen.routeName: (context) => FormScreen(),
             BottomNavigation.routeName: (context) => BottomNavigation(),
             // OtpScreen.routeName: (context) => OtpScreen(),
             QRCodeScreen.routeName: (context) => QRCodeScreen(),

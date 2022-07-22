@@ -347,9 +347,9 @@ class _OtpScreenState extends State<OtpScreen> {
                 ScaffoldMessenger.of(context).hideCurrentSnackBar()),
       ));
 
-      // Navigator.of(context).pushNamed(FormScreen.routeName);
-      Navigator.of(context)
-          .push(MaterialPageRoute(builder: (context) => FormScreen()));
+      Navigator.of(context).pushNamed(FormScreen.routeName);
+      // Navigator.of(context)
+      //     .push(MaterialPageRoute(builder: (context) => FormScreen()));
     } else if (otpResponse['type'] == 'exist' &&
         response['message'] == 'Login success') {
       print('BLOCKED RICHED');
