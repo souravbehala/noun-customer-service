@@ -2,23 +2,23 @@ import 'package:flutter/material.dart';
 
 class BookingListItem extends StatelessWidget {
   // const BookingListItem({Key? key}) : super(key: key);
-  final String carImg;
-  final String carBrand;
-  final String carType;
+  // final String carImg;
+  // final String carBrand;
+  // final String carType;
   final String bookingDate;
   final String bookingPrice;
   final String bookingTime;
-  final String bookingPower;
+  // final String bookingPower;
   final String portType;
 
   BookingListItem({
     required this.bookingDate,
-    required this.carBrand,
-    required this.carType,
-    required this.bookingPower,
+    // required this.carBrand,
+    // required this.carType,
+    // required this.bookingPower,
     required this.bookingPrice,
     required this.bookingTime,
-    required this.carImg,
+    // required this.carImg,
     required this.portType,
   });
 
@@ -150,7 +150,7 @@ class BookingListItem extends StatelessWidget {
                           fontSize: 13.0, fontWeight: FontWeight.bold),
                     ),
                     Text(
-                      bookingPower,
+                      '50W',
                       style: TextStyle(
                           fontSize: 13.0, fontWeight: FontWeight.bold),
                     ),

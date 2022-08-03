@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import '../widgets/bottom_navigation_bar.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   final String title;
@@ -14,7 +15,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       title: Text(title),
-      automaticallyImplyLeading: showBackButton,
+      // automaticallyImplyLeading: showBackButton,
+      leading: IconButton(
+          onPressed: () => Navigator.of(context).push(
+              MaterialPageRoute(builder: (context) => BottomNavigation())),
+          icon: const Icon(Icons.arrow_back, color: Colors.white)),
       backgroundColor: Colors.transparent,
       elevation: 0,
       centerTitle: true,

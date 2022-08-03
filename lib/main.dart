@@ -26,6 +26,8 @@ import './providers/stationNameList.dart';
 import './providers/providerDetails.dart';
 import 'package:jwt_decoder/jwt_decoder.dart';
 import './providers/station/satationDetails.dart';
+import './providers/station/stationPort.dart';
+import './providers/bookings.dart';
 
 void main() {
   runApp(MyApp());
@@ -83,7 +85,9 @@ class MyAppState extends State<MyApp> {
         ChangeNotifierProvider(create: (ctx) => AddStation()),
         ChangeNotifierProvider(create: (ctx) => StationNameList()),
         ChangeNotifierProvider(create: (ctx) => ProviderDetails()),
-        ChangeNotifierProvider(create: (ctx) => StationDetails())
+        ChangeNotifierProvider(create: (ctx) => StationDetails()),
+        ChangeNotifierProvider(create: (ctx) => StationPort()),
+        ChangeNotifierProvider(create: (ctx) => Bookings())
       ],
       child: Consumer<UserDataContainer>(
         builder: (ctx, userData, _) => MaterialApp(

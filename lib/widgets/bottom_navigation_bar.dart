@@ -12,6 +12,8 @@ import '../providers/stationNameList.dart';
 import '../providers/providerDetails.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import '../providers/station/satationDetails.dart';
+import '../providers/station/stationPort.dart';
+import '../providers/bookings.dart';
 
 class BottomNavigation extends StatefulWidget {
   static const routeName = 'bottom_navigation_bar';
@@ -49,8 +51,14 @@ class BottomNavigationState extends State<BottomNavigation> {
         Provider.of<ProviderDetails>(context, listen: false)
             .getProviderDetails()
             .then((_) {
-          setState(() {
-            isLoading = false;
+          Provider.of<Bookings>(context, listen: false).getBookings().then((_) {
+            Provider.of<StationPort>(context, listen: false)
+                .getPortDetails()
+                .then((_) {
+              setState(() {
+                isLoading = false;
+              });
+            });
           });
         });
       });
@@ -59,8 +67,20 @@ class BottomNavigationState extends State<BottomNavigation> {
       Provider.of<StationDetails>(context, listen: false)
           .getStationDetails()
           .then((_) {
-        setState(() {
-          isLoading = false;
+        Provider.of<StationPort>(context, listen: false)
+            .getPortTypes()
+            .then((_) {
+          Provider.of<StationPort>(context, listen: false)
+              .getPortDetails()
+              .then((_) {
+            Provider.of<Bookings>(context, listen: false)
+                .getBookings()
+                .then((_) {
+              setState(() {
+                isLoading = false;
+              });
+            });
+          });
         });
       });
     }

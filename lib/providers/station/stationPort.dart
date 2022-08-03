@@ -6,9 +6,14 @@ import '../../utilities/config.dart';
 
 class StationPort with ChangeNotifier {
   Map<String, dynamic> _portDetails = {};
+  Map<String, dynamic> _portTypes = {};
 
   Map<String, dynamic> get portDetails {
     return {..._portDetails};
+  }
+
+  Map<String, dynamic> get portTypes {
+    return {..._portTypes};
   }
 
   Future<void> getPortDetails() async {
@@ -29,12 +34,29 @@ class StationPort with ChangeNotifier {
     print('Port Details: $_portDetails');
   }
 
-  Future<Map<String, dynamic>> postPort() async {
+  Future<void> getPortTypes() async {
+    var response = await http.get(Uri.parse('$baseURL/common/charging-ports'),
+        headers: {'Content-Type': 'application/json'});
+
+    if (response.statusCode == 200) {
+      _portTypes = json.decode(response.body);
+    } else {
+      _portTypes = {'data': []};
+    }
+
+    print('Port Types: $_portTypes');
+  }
+
+  Future<Map<String, dynamic>> postPort(
+      int portId, String portName, int price) async {
     SharedPreferences localStorage = await SharedPreferences.getInstance();
 
     var response = await http.post(Uri.parse('$baseURL/station/ports'),
-        body: json
-            .encode({'chargingPortKey': '', 'portName': '', 'portPrice': 0}),
+        body: json.encode({
+          'chargingPortKey': portId,
+          'portName': portName,
+          'portPrice': price
+        }),
         headers: {
           'Content-Type': 'application/json',
           'Authorization': 'Bearer ${localStorage.getString('token')}'
